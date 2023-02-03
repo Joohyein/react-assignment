@@ -2,44 +2,38 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script> 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>assignment</title>
 </head>
 <body>
-    <form id="content">
+    <!-- onsubmit="alert('제출 완료')" -->
+    <form id="content" >
         <h3>정보 입력 페이지</h3>
 
         <label for="firstName">First name :</label>
-        <span class="box">
-            <input type="text" id="firstName" class="int" required/>
-        </span>
-
+        <input class="box" type="text" id="firstName" class="int" required/>
         <label for="lastName">Last name :</label>
-        <span class="box">
-            <input type="text" id="lastName" class="int" required/>
-        </span>
-
+        <input class="box" type="text" id="lastName" class="int" required/>
         <label for="email">Email :</label>
-        <span class="box">
-            <input type="email" id="email" class="int" required/>
-        </span>
+        <input class="box" type="email" id="email" class="int" required/>
 
         <fieldset>
             <legend>fieldset</legend>
             <span class="check">       
                 <label>Gender : </label>      
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="male" name="gender" value="male" required>
                 <label for="male"> Male</label>
-                <input type="radio" id="female" name="gender" value="female">
+                <input type="radio" id="female" name="gender" value="female" required>
                 <label for="female"> Female</label>               
             </span>
 
             <span class="check">
                 <label>Favorite</label>
                 <label><input type="checkbox" name="favorite" value="html"/> HTML</label>
-                <label><input type="checkbox" name="favorite" value="java" />J AVA</label>
+                <label><input type="checkbox" name="favorite" value="java" /> JAVA</label>
                 <label><input type="checkbox" name="favorite" value="javascript"/> JavaScript</label>
             </span>
 
@@ -58,7 +52,8 @@
             </span>
         </fieldset>
 
-        <input class="join-btn" type="submit" value="제출"/>
+        <input id="submitBtn" type="submit" value="제출"/>
+        <!-- submit이 완료되었을 때 alert 띄우기 -->
     </form>
 </body>
 </html>

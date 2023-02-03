@@ -34,7 +34,7 @@ body {
     background: #fff;
     font-size: 15px;
 }
-.join-btn {
+#submitBtn {
     margin-top:10px;
     border:none;
     background-color: #a6c2ff;
@@ -43,7 +43,7 @@ body {
     transition: all 300ms;
     width:80px;
 }
-.join-btn:hover {
+#submitBtn:hover {
     background-color: #5589fa;
 }
 
