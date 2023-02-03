@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="content">
+        <h3>정보 입력 페이지</h3>
+
+        <label for="firstName">First name :</label>
+        <span class="box">
+            <input type="text" id="firstName" class="int" required/>
+        </span>
+
+        <label for="lastName">Last name :</label>
+        <span class="box">
+            <input type="text" id="lastName" class="int" required/>
+        </span>
+
+        <label for="email">Email :</label>
+        <span class="box">
+            <input type="email" id="email" class="int" required/>
+        </span>
+
+        <fieldset>
+            <legend>fieldset</legend>
+            <span class="check">       
+                <label>Gender : </label>      
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male"> Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female"> Female</label>               
+            </span>
+
+            <span class="check">
+                <label>Favorite</label>
+                <label><input type="checkbox" name="favorite" value="html"/> HTML</label>
+                <label><input type="checkbox" name="favorite" value="java" />J AVA</label>
+                <label><input type="checkbox" name="favorite" value="javascript"/> JavaScript</label>
+            </span>
+
+            <span class="check">
+                <label for="browser">browser :</label>
+                <select>
+                    <option value="chrome">크롬</option>
+                    <option value="safari">사파리</option>
+                    <option value="edge">엣지</option>
+                </select>
+            </span>
+            
+            <span class="check">
+                <label for="brithday">Birthday : </label>
+                <input type="date" id="birthday"/>
+            </span>
+        </fieldset>
+
+        <input class="join-btn" type="submit" value="제출"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin:0;
+    height: 100%;
+    background: #f5f6f7;
+}
+
+#content {
+    position :absolute;
+    left:50%;
+    transform: translate(-50%);
+    width: 460px;
+}
+.box {
+    display: block;
+    width:100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+    margin-bottom: 10px;
+}
+.int {
+    display: block;
+    position: relative;
+    width:100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
+}
+.join-btn {
+    margin-top:10px;
+    border:none;
+    background-color: #a6c2ff;
+    padding:10px 20px;
+    border-radius: 3px;
+    transition: all 300ms;
+    width:80px;
+}
+.join-btn:hover {
+    background-color: #5589fa;
+}
+
+.check {
+    margin-bottom: 10px;
+}
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
