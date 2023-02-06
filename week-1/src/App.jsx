@@ -2,12 +2,9 @@ import React, {useState} from "react";
 import "App.css";
 
 export default function App() {
-  const [obj, setObj] = useState([
-    //{id: 1, title:'title', content:'content'},
-  ]);
-  const [done, setDone] = useState([
-    
-  ]);
+  const [obj, setObj] = useState([]);
+  const [done, setDone] = useState([]);
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -19,19 +16,20 @@ export default function App() {
   }
  
   // 추가버튼 : 빈 객체일 때 초기값 따로 추가
-  const btnClickAddHandler = () => {
+  const btnClickAddHandler = (e) => {
+    e.preventDefault();
+    if(!title && !content) return;
     if(obj.length === 0) {
       const zeroInfo = {
-        id: 1,
+        id: Date.now(),
         title,
         content,
       };
       setObj([...obj,zeroInfo]);
     }
     else{
-      let tmp = obj[obj.length - 1].id;
       const info = {
-        id: (tmp + 1),
+        id: Date.now(),
         title,
         content,
       };
@@ -51,9 +49,16 @@ export default function App() {
   };
   // 완료버튼
   const btnClickDoneHandler = (id) => {
-    const doneObj = obj.filter((item) => item.id === id);
-    if(done.length === 0) setDone = ([...done,doneObj]);
-    else setDone([...done, doneObj]);
+    const doneObj = obj.filter((item)=>item.id === id);
+    const deleteObj = obj.filter((item)=> item.id !== id);
+    if(done.length === 0){
+      setDone(doneObj);
+    } else {
+      setDone([...done, doneObj[0]]);
+    }
+    setObj(deleteObj);
+    console.log(done);
+    console.log(doneObj);
   };
   
   return (
@@ -118,7 +123,7 @@ const ObjWorking = ({item, btnClickRemoveHandler, btnClickDoneHandler}) => {
         <button onClick={()=>btnClickRemoveHandler(item.id)}> 삭제 </button>
         <button onClick={()=>{
           btnClickDoneHandler(item.id);
-          btnClickRemoveHandler(item.id);
+          // btnClickRemoveHandler(item.id);
           }}> 완료 </button>
       </div>
     </div>
@@ -132,7 +137,7 @@ const ObjDone = ({item, btnClickRemoveHandler}) => {
         <div className="content__title">{item.title}</div>
         <div className="content__content">{item.content}</div>
       </div>
-      <div>
+      <div className="buttons">
         <button onClick={()=>btnClickRemoveHandler(item.id)}>삭제</button>
         <button>취소</button>
       </div>
