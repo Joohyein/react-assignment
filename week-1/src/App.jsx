@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import "App.css";
+import ObjWorking from "component/ObjWorking";
+import ObjDone from "component/ObjDone";
 
 export default function App() {
   const [obj, setObj] = useState([]);
@@ -24,6 +26,7 @@ export default function App() {
         id: Date.now(),
         title,
         content,
+        isComplete:false,
       };
       setObj([...obj,zeroInfo]);
     }
@@ -32,6 +35,7 @@ export default function App() {
         id: Date.now(),
         title,
         content,
+        isComplete:false,
       };
       setObj([...obj, info]);
     }
@@ -121,36 +125,5 @@ export default function App() {
     </div>
   );
 };
-//------------------------------------------------------
-const ObjWorking = ({item, btnClickRemoveHandler, btnClickDoneHandler}) => {
-  return (
-    <div className="workingBox">
-      <div className="content">
-        <div className="content__title">{item.title}</div>
-        <div className="content__content">{item.content}</div>
-      </div>
-      <div className="buttons">
-        <button onClick={()=>btnClickRemoveHandler(item.id)}> 삭제 </button>
-        <button onClick={()=>{
-          btnClickDoneHandler(item.id);
-          // btnClickRemoveHandler(item.id);
-          }}> 완료 </button>
-      </div>
-    </div>
-  )
-};
 
-const ObjDone = ({item, btnClickRemoveHandler, btnClickCancelHandler}) => {
-  return (
-    <div className="doneBox">
-      <div className="content">
-        <div className="content__title">{item.title}</div>
-        <div className="content__content">{item.content}</div>
-      </div>
-      <div className="buttons">
-        <button onClick={()=>btnClickRemoveHandler(item.id)}>삭제</button>
-        <button onClick={()=>btnClickCancelHandler(item.id)}>취소</button>
-      </div>
-    </div>
-  )
-}
+
