@@ -2,24 +2,105 @@
   text-align: center;
 }
 body {
-  padding:50px;
+  margin: 0;
 }
 
-.content{
-  padding:20px;
+.topBar {
+  font-size:30px;
+  font-weight:800;
+  padding: 20px;
+  margin-bottom:20px;
+  box-shadow: 0px 0px 5px 0px gray;
+  color:rgb(0, 57, 78);
+}
+/* inputBox ----------------------------------- */
+.inputBox {
+  background-color: rgb(0, 117, 159);
+  border-radius: 8px;
   display: flex;
-  gap:12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  margin: 10px 20px;
+}
+.inputBox__input {
+  display:flex;
+  margin: 10px;
+}
+.inputBox__input label {
+  color: white;
+  font-size:20px;
+}
+.inputBox__input input{
+  margin-right: 20px;
+  width: 250px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+}
+.inputBox button {
+  width: 80px;
+  height: 40px;
+  margin-right: 20px;
+  border:none;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  font-size:16px;
+  cursor: pointer;
 }
 
-.box {
-  width: 100px;
-  height:100px;
-  border: solid 1px yellowgreen;
-  border-radius: 5px;
+/* working, done ------------------------------------- */
+.working,
+.done{
+  display: flex;
+  margin: 10px 20px;
+}
+h3 {
+  font-size:30px;
+  margin: 15px 20px;
+}
+.workingBox, 
+.doneBox {
+  width:300px;
+  height:200px;
+  margin-bottom: 20px;
+  border:solid 3px rgb(124, 175, 226);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: self-start;
+  padding: 20px;
+}
+.content {
+  padding:20px;
+}
+.buttons{
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
+.content__title{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.buttons button{
+  border:none;
+  padding: 15px;
+  margin: 0px 5px;
+  border: solid 2px rgb(0, 123, 172);
+  border-radius: 5px;
+  width: 45%;
+  transition: 300ms;
 
-
+}
+.buttons button:hover {
+  border: solid 2px rgb(1, 78, 145);
+  transform:translateY(-2px);
+  cursor: pointer;
+}
