@@ -57,9 +57,18 @@ export default function App() {
       setDone([...done, doneObj[0]]);
     }
     setObj(deleteObj);
-    console.log(done);
-    console.log(doneObj);
   };
+  // 취소버튼
+  const btnClickCancelHandler = (id) => {
+    const doneObj = done.filter((item)=> item.id !== id);
+    const cancelObj = done.filter((item)=> item.id === id);
+    if(obj.length === 0){
+      setObj(cancelObj);
+    }else {
+      setObj([...obj, cancelObj[0]]);
+    }
+    setDone(doneObj);
+  }
   
   return (
     <div>
@@ -102,6 +111,7 @@ export default function App() {
                 key={item.id} 
                 item={item}
                 btnClickRemoveHandler={btnClickRemoveHandler}
+                btnClickCancelHandler={btnClickCancelHandler}
                 />
               </div>
             )
@@ -130,7 +140,7 @@ const ObjWorking = ({item, btnClickRemoveHandler, btnClickDoneHandler}) => {
   )
 };
 
-const ObjDone = ({item, btnClickRemoveHandler}) => {
+const ObjDone = ({item, btnClickRemoveHandler, btnClickCancelHandler}) => {
   return (
     <div className="doneBox">
       <div className="content">
@@ -139,7 +149,7 @@ const ObjDone = ({item, btnClickRemoveHandler}) => {
       </div>
       <div className="buttons">
         <button onClick={()=>btnClickRemoveHandler(item.id)}>삭제</button>
-        <button>취소</button>
+        <button onClick={()=>btnClickCancelHandler(item.id)}>취소</button>
       </div>
     </div>
   )
