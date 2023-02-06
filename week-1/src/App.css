@@ -4,6 +4,13 @@
 body {
   margin: 0;
 }
+.container {
+  width:1200px;
+  height:800px;
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+}
 
 .topBar {
   font-size:30px;
@@ -12,6 +19,7 @@ body {
   margin-bottom:20px;
   box-shadow: 0px 0px 5px 0px gray;
   color:rgb(0, 57, 78);
+  width:100%;
 }
 /* inputBox ----------------------------------- */
 .inputBox {
@@ -20,8 +28,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px;
-  margin: 10px 20px;
+  padding: 20px;
+  margin: 10px auto;
+  width:100%;
 }
 .inputBox__input {
   display:flex;
@@ -54,18 +63,19 @@ body {
 }
 
 /* working, done ------------------------------------- */
-.working,
-.done{
+.working{
   display: flex;
-  margin: 10px 20px;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: start;
+  width:100%;
 }
 h3 {
   font-size:30px;
   margin: 15px 20px;
 }
-.workingBox, 
 .doneBox {
-  width:300px;
+  width:320px;
   height:200px;
   margin-bottom: 20px;
   margin-right:10px;
@@ -79,6 +89,12 @@ h3 {
 }
 .content {
   padding:20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.titleAndContent{
+  display: flex;
+  flex-direction: column;
 }
 .buttons{
   width: 100%;
@@ -104,4 +120,28 @@ h3 {
   border: solid 2px rgb(1, 78, 145);
   transform:translateY(-2px);
   cursor: pointer;
+}
+
+/* media ----------------------------------------- */
+@media screen and (max-width:900px){
+  .container {
+    width:800px;
+    height:800px;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+  }
+  .inputBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin:auto;
+  }
+  .done{
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+  }
 }

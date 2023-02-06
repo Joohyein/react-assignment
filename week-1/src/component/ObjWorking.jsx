@@ -1,17 +1,31 @@
+import Contents from "./ObjDone";
 
-const ObjWorking = ({item, btnClickRemoveHandler, btnClickDoneHandler}) => {
+const ObjWorking = ({item, btnClickRemoveHandler, onToggle}) => {
+    console.log(item);
     return (
       <div className="workingBox">
+        <h3>Working</h3>
         <div className="content">
-          <div className="content__title">{item.title}</div>
-          <div className="content__content">{item.content}</div>
+            
+          {item.filter((item)=>!item.isComplete).map((item)=>
+            <Contents 
+                item={item} 
+                key={item.id} 
+                btnClickRemoveHandler={btnClickRemoveHandler} 
+                onToggle={onToggle}
+            />
+          )}
         </div>
-        <div className="buttons">
-          <button onClick={()=>btnClickRemoveHandler(item.id)}> 삭제 </button>
-          <button onClick={()=>{
-            btnClickDoneHandler(item.id);
-            // btnClickRemoveHandler(item.id);
-            }}> 완료 </button>
+        <h3>Done</h3>
+        <div className="content">
+            {item.filter((item)=>item.isComplete).map((item)=>
+                <Contents 
+                    item={item} 
+                    key={item.id} 
+                    btnClickRemoveHandler={btnClickRemoveHandler} 
+                    onToggle={onToggle}
+                />
+            )}
         </div>
       </div>
     )
