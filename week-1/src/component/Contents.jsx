@@ -1,7 +1,6 @@
 const Contents = ({item, btnClickRemoveHandler, onToggle}) => {
-    console.log(222);
     return (
-      <div className="doneBox">
+      <div className="todoBox">
         <div className="titleAndContent">
           <div className="content__title">{item.title}</div>
           <div className="content__content">{item.content}</div>

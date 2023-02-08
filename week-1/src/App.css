@@ -68,13 +68,16 @@ body {
   margin: auto;
   flex-wrap: wrap;
   justify-content: start;
+  align-items: start;
   width:100%;
+  height: 100%;
 }
 h3 {
   font-size:30px;
   margin: 15px 20px;
 }
-.doneBox {
+
+.todoBox {
   width:320px;
   height:200px;
   margin-bottom: 20px;

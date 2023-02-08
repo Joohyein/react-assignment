@@ -1,12 +1,11 @@
-import Contents from "./ObjDone";
+import Contents from "./Contents";
 
-const ObjWorking = ({item, btnClickRemoveHandler, onToggle}) => {
+const TodoList = ({item, btnClickRemoveHandler, onToggle}) => {
     console.log(item);
     return (
-      <div className="workingBox">
+      <div>
         <h3>Working</h3>
         <div className="content">
-            
           {item.filter((item)=>!item.isComplete).map((item)=>
             <Contents 
                 item={item} 
@@ -31,4 +30,4 @@ const ObjWorking = ({item, btnClickRemoveHandler, onToggle}) => {
     )
   };
 
-  export default ObjWorking;
+  export default TodoList;

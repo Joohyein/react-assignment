@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "App.css";
-import ObjWorking from "component/ObjWorking";
+import TodoList from "component/WorkingDone";
 
 export default function App() {
   const [obj, setObj] = useState([]);
@@ -19,7 +19,7 @@ export default function App() {
   const btnClickAddHandler = (e) => {
     if(!title && !content) return;
     const info = {
-      id: Date.now(),
+      id: Math.random(),
       title,
       content,
       isComplete:false,
@@ -59,7 +59,7 @@ export default function App() {
 
       <div className="working">
         {
-          <ObjWorking 
+          <TodoList 
             item={obj} 
             key={obj.id}
             btnClickRemoveHandler={btnClickRemoveHandler} 
