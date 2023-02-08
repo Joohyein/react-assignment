@@ -43,6 +43,13 @@ export default function App() {
     setObj(tmpObj);
   } 
 
+  // onKeyPress 이벤트 핸들링
+  const onKeyPress = e => {
+    if (e.key === 'Enter') {
+      btnClickAddHandler();
+    }
+  };
+
   return (
     <div className="container">
       <div className="topBar">
@@ -52,9 +59,9 @@ export default function App() {
       <div className="inputBox">
         <div className="inputBox__input">
           <label for="title">제목 <input type="text" id="title" value={title} onChange={titleChangeHandler} /></label>
-          <label for="content">내용 <input type="text" id="content" value={content} onChange={contentChangeHandler} /></label>
+          <label for="content">내용 <input type="text" id="content" value={content} onChange={contentChangeHandler} onKeyPress={onKeyPress} /></label>
         </div>        
-        <button onClick={btnClickAddHandler}> 추가 </button>
+        <button onClick={btnClickAddHandler} > 추가 </button>
       </div>
 
       <div className="working">
@@ -70,5 +77,3 @@ export default function App() {
     </div>
   );
 };
-
-
