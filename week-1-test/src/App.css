@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+.main {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+}
+span {
+  font-size: 30px;
+}
+.container{
+  display: flex;
+  width:100%;
+  flex-wrap: wrap;
+}
+.container__box {
+  width: 100px;
+  height: 100px;
+  border: solid 2px #008000;
+  margin: 10px;
+  border-radius: 8px;
+  text-align: center;
+}

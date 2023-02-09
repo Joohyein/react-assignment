@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 body {
   margin: 0;
 }
@@ -60,7 +58,7 @@ body {
   border-radius: 5px;
   font-size:16px;
   cursor: pointer;
-}
+} 
 
 /* working, done ------------------------------------- */
 .working{
@@ -123,10 +121,10 @@ h3 {
   border: solid 2px rgb(1, 78, 145);
   transform:translateY(-2px);
   cursor: pointer;
-}
+} 
 
 /* media ----------------------------------------- */
-@media screen and (max-width:900px){
+ @media screen and (max-width:900px){
   .container {
     width:800px;
     height:800px;
@@ -147,4 +145,4 @@ h3 {
     margin: auto;
     flex-wrap: wrap;
   }
-}
+} 
