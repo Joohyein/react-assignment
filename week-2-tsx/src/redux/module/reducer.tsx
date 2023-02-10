@@ -1,4 +1,4 @@
-import {TodoActionTypes, ADD_TODO, REMOVE_TODO} from '../module/action';
+import {TodoActionTypes, ADD_TODO, REMOVE_TODO} from './action';
 
 const initialState = {
   todos: [] as string[],
