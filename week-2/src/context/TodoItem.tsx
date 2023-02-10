@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodo } from '../redux/module/todos';
+import { removeTodo } from '../redux/module/action';
 
 interface Props {
   title: string;

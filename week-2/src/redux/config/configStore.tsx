@@ -1,13 +1,6 @@
-import React from 'react'
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import todos from '../module/todos';
+import { createStore } from 'redux';
+import reducer from '../module/reducer';
 
-const rootReducer = combineReducers({
-    todos,
-});
-const store = createStore(
-    combineReducers({todos})
-);
+const store = createStore(reducer);
 
 export default store;
