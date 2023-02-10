@@ -15,5 +15,9 @@
     "url": "https://github.com/Joohyein/react-assignment/issues"
   },
   "homepage": "https://github.com/Joohyein/react-assignment#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1"
+  }
 }
