@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
 
 const TodoList = ({item, removeBtnClickHandler, onToggle}) => {
-    // console.log(item); // undefined
-
     return (
         <div className="container">
             <div className="titleAndContent">
+                <Link to={`/todo/${item.id}`}>상세페이지</Link>
                 <div className="todo-title">{item.title}</div>
                 <div className="todo-content">{item.content}</div>
             </div>

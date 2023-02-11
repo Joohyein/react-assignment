@@ -1,5 +1,6 @@
 const ADD_TODO = "ADD";
 const DELETE_TODO = "DELETE";
+const ONTOGGLE_TODO = "ONTOGGLE"
 
 export const addTodo = (payload) => {
     return {
@@ -10,6 +11,12 @@ export const addTodo = (payload) => {
 export const deleteTodo = (payload) => {
     return {
         type: DELETE_TODO,
+        payload,
+    }
+}
+export const onToggleTodo = (payload) => {
+    return {
+        type: ONTOGGLE_TODO,
         payload,
     }
 }
@@ -29,10 +36,13 @@ const todos = (state= initialState, action) => {
     switch(action.type){
         case ADD_TODO:
             return {
-                // ...state,
                 todos: [...state.todos, action.payload],
             }
         case DELETE_TODO:
+            return {
+                todos: action.payload,
+            }
+        case ONTOGGLE_TODO:
             return {
                 todos: action.payload,
             }
