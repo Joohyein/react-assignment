@@ -1,5 +1,7 @@
 
 const TodoList = ({item, removeBtnClickHandler, onToggle}) => {
+    // console.log(item); // undefined
+
     return (
         <div className="container">
             <div className="titleAndContent">

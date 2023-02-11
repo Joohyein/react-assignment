@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoList from "../component/TodoList"
-import { addTodo } from '../redux/module/todos';
+import { addTodo, deleteTodo } from '../redux/module/todos';
 // 경로설정!!! .. 붙이기
 
 function Home() {
@@ -12,10 +12,10 @@ function Home() {
   const [content, setContent] = useState('');
 
   const dispatch = useDispatch();
+
   const data = useSelector((state)=>{
     return state.todos.todos;
   })
-  console.log(data);
 
   const addBtnClickHandler = () => {
     if(!title || !content) return;
@@ -32,14 +32,12 @@ function Home() {
   }
 
   const removeBtnClickHandler = (id) => {
-    const removeItem = todos.filter((el)=> el.id !== id);
-    setTodos(removeItem);
+    const removeItem = data.filter((el)=> el.id !== id);
+    dispatch(deleteTodo(removeItem))
   };
   const onToggle = (id) => {
-    console.log(1);
     const toggle = todos.map((el)=> (el.id === id ? {...el, isComplete: !el.isComplete} : el))
     setTodos(toggle);
-    console.log(toggle);
   };
 
   return (
