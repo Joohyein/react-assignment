@@ -1,12 +1,12 @@
 // import './App.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoList from "../component/TodoList"
 import { addTodo, deleteTodo, onToggleTodo } from '../redux/module/todos';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function Home() {
-//   const [todos, setTodos] = useState([]);
-  
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -15,7 +15,7 @@ function Home() {
   const data = useSelector((state)=>{
     return state.todos.todos;
   })
-//   console.log(data);
+
   const addBtnClickHandler = () => {
     if(!title || !content) return;
     dispatch(
@@ -28,6 +28,7 @@ function Home() {
     )
     setTitle('');
     setContent('');
+    inputFocus.current.focus();
   }
 
   const removeBtnClickHandler = (id) => {
@@ -39,19 +40,27 @@ function Home() {
     dispatch(onToggleTodo(toggle))
   };
 
+  const onKeyPress = e => {
+    if (e.key === 'Enter') {
+      addBtnClickHandler();
+    }
+  };
+
+  const inputFocus = useRef();
+
   return (
-    <div>
-      <h3>Todo List</h3>
-      <div className='inputBox'>
-        <div className='inputBox__input'>
-          <label htmlFor='title'>제목 <input value={title} id='title' onChange={(e)=>setTitle(e.target.value)} /></label>
-          <label htmlFor='content'>내용 <input value={content} id='content' onChange={((e)=>setContent(e.target.value))} /></label>
-        </div>
-        <button onClick={addBtnClickHandler}>추가하기</button>
-      </div>
-      <div className='todoBox'>
-        <div className="todoList">
-          <h3>Doing</h3>
+    <StContainer>
+      <StH3>Todo List</StH3>
+      <StInputBox>
+        <StInput>
+          <StLabel htmlFor='title'>제목 <input value={title} id='title' onChange={(e)=>setTitle(e.target.value)} ref={inputFocus} /></StLabel>
+          <StLabel htmlFor='content'>내용 <input value={content} id='content' onChange={((e)=>setContent(e.target.value))} onKeyPress={onKeyPress}/></StLabel>
+        </StInput>
+        <StBtn onClick={addBtnClickHandler}>추가하기</StBtn>
+      </StInputBox>
+      <StTodoBox>
+        <h3>Doing</h3>
+        <StTodoList>
           {
             data.filter((el)=>!el.isComplete).map((el)=>
             <TodoList 
@@ -61,10 +70,9 @@ function Home() {
               onToggle={onToggle}
             />
           )}
-          
-        </div>
-        <div className="todoList">
-          <h3>Done</h3>
+        </StTodoList>
+        <h3>Done</h3>
+        <StTodoList>
           {
             data.filter((el)=>el.isComplete).map((el)=>
             <TodoList
@@ -75,11 +83,64 @@ function Home() {
             />
           )}
           
-        </div>
+        </StTodoList>
         
-      </div>
-    </div>
+      </StTodoBox>
+    </StContainer>
   );
 }
 
 export default Home;
+
+// style ----------------------------------------------
+
+const StContainer = styled.div`
+  width: 1000px;
+  height: 800px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const StH3 = styled.h3`
+  background-color: #ffffff;
+  width:100%;
+  padding:20px;
+  box-shadow: inset;
+`;
+const StInputBox = styled.div`
+  background-color: #204383;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:100%;
+  padding:20px;
+`
+const StInput = styled.div`
+  color:white;
+`
+const StLabel = styled.label`
+  margin-right: 20px;
+`
+const StBtn = styled.button`
+  border: 2px solid white;
+  background-color: #204383;
+  color:white;
+  padding:5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+`
+// Doing, Done Todolist style --------------------------------
+const StTodoBox = styled.div`
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+`
+const StTodoList = styled.div`
+  display: flex;
+  margin:10px;
+  flex-wrap: wrap;
+`
+const StLink = styled(Link)`
+  text-decoration: none;
+`
