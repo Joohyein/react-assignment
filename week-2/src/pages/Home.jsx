@@ -1,10 +1,8 @@
-// import './App.css';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoList from "../component/TodoList"
 import { addTodo, deleteTodo, onToggleTodo } from '../redux/module/todos';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 function Home() {
   const [title, setTitle] = useState('');
@@ -20,7 +18,6 @@ function Home() {
     if(!title || !content) return;
     dispatch(
         addTodo({
-            id: Math.random() + Date.now(),
             title,
             content,
             isComplete:false,
@@ -140,7 +137,4 @@ const StTodoList = styled.div`
   display: flex;
   margin:10px;
   flex-wrap: wrap;
-`
-const StLink = styled(Link)`
-  text-decoration: none;
 `

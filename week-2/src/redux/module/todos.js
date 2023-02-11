@@ -22,6 +22,7 @@ export const onToggleTodo = (payload) => {
 }
 
 const initialState = {
+    cnt:0,
     todos: [
         // {
         //     id: 1,
@@ -36,14 +37,17 @@ const todos = (state= initialState, action) => {
     switch(action.type){
         case ADD_TODO:
             return {
-                todos: [...state.todos, action.payload],
+                cnt: state.cnt+1,
+                todos: [...state.todos, {...action.payload,id:state.cnt}],
             }
         case DELETE_TODO:
             return {
+                cnt: state.cnt,
                 todos: action.payload,
             }
         case ONTOGGLE_TODO:
             return {
+                cnt: state.cnt,
                 todos: action.payload,
             }
         default:
