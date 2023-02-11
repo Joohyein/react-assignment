@@ -18,6 +18,7 @@
   "description": "",
   "dependencies": {
     "react-redux": "^8.0.5",
+    "react-router-dom": "^6.8.1",
     "redux": "^4.2.1"
   }
 }
