@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ADD = 'ADD';
 const REMOVE = 'REMOVE';
 const TOGGLE = 'TOGGLE';
@@ -12,7 +10,7 @@ export interface todoListState {
 }
 
 export const initialState:{cnt:number, todos: todoListState[]} = {
-    cnt:0,
+    cnt:1,
     todos: [],
 }
 
@@ -43,6 +41,8 @@ const todos = (state = initialState, action:{type:string, payload:todoListState}
             return {cnt:state.cnt, todos:[...state.todos]};
         case TOGGLE:
             return {cnt:state.cnt, todos:[...state.todos]};
+        default:
+            return state;
     }
 
 }
