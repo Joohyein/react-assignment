@@ -8,7 +8,7 @@ const Form = () => {
   const id = nextId();
   
   const [todo, setTodo] = useState({
-    id: "",
+    id: 0,
     title: "",
     body: "",
     isDone: false,
@@ -24,8 +24,13 @@ const Form = () => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (todo.title.trim() === "" || todo.body.trim() === "") return;
-    setTodo({...todo, id:id})
-    dispatch(addTodo(todo));
+    dispatch(addTodo({...todo, id}));
+    setTodo({
+      id:0,
+      title:'',
+      body:'',
+      isComplete:false,
+    })
   };
 
 

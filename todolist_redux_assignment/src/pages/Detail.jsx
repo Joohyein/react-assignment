@@ -6,20 +6,23 @@ import { getTodoByID } from "../redux/modules/todos.js";
 
 const Detail = () => {
   const dispatch = useDispatch();
-  const todo = useSelector((state) => state.todos.todos);
+  const todo = useSelector((state) => state.todos.todo);
   console.log(todo);
 
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const data = todo.find((item)=>item.id===id);
+  useEffect(()=>{
+    dispatch(getTodoByID(id))
+  },[id]);
+  // 화면이 렌더링될 때 해당하는 id값이 필요
 
   return (
     <StContainer>
       <StDialog>
         <div>
           <StDialogHeader>
-            <div>ID :{data.id}</div>
+            <div>ID :{todo.id}</div>
             <StButton
               borderColor="#ddd"
               onClick={() => {
@@ -29,8 +32,8 @@ const Detail = () => {
               이전으로
             </StButton>
           </StDialogHeader>
-          <StTitle>{data.title}</StTitle>
-          <StBody>{data.body}</StBody>
+          <StTitle>{todo.title}</StTitle>
+          <StBody>{todo.body}</StBody>
         </div>
       </StDialog>
     </StContainer>

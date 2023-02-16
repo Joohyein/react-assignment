@@ -9,10 +9,10 @@ const List = () => {
   const todos = useSelector((state) => state.todos.todos);
 
   const onDeleteTodo = (id) => {
-    dispatch(deleteTodo({...todos, id}));
+    dispatch(deleteTodo(id));
   };
   const onToggleStatusTodo = (id) => {
-    dispatch(toggleStatusTodo({...todos, id}));
+    dispatch(toggleStatusTodo(id));
   };
 
   return (

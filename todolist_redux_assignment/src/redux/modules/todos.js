@@ -48,12 +48,12 @@ const initialState = {
       isDone: false,
     },
   ],
-  // todo: {
-  //   id: "0",
-  //   title: "",
-  //   body: "",
-  //   isDone: false,
-  // },
+  todo: {
+    id: "0",
+    title: "",
+    body: "",
+    isDone: false,
+  },
 };
 
 const todos = (state = initialState, action) => {
@@ -61,11 +61,11 @@ const todos = (state = initialState, action) => {
     case ADD_TODO:
       console.log({...action.payload})
       return {
-        // ...state,
-        todos: [...state.todos, {...action.payload}],
+        ...state,
+        todos: [...state.todos, action.payload],
       };
     case DELETE_TODO:
-      const arr = [...state.todos.filter((todo)=>todo.id!==action.payload.id)]
+      const arr = [...state.todos.filter((todo)=>todo.id!==action.payload)]
       console.log("arr:", arr);
       return { todos: arr }
 
@@ -73,7 +73,7 @@ const todos = (state = initialState, action) => {
       return {
         // ...state,
         todos: state.todos.map((todo) => {
-          if (todo.id === String(action.payload.id)) {
+          if (todo.id === String(action.payload)) {
             return {
               ...todo,
               isDone: !todo.isDone,
