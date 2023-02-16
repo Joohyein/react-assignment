@@ -1,9 +1,9 @@
 import React from 'react'
 
-function TodoList() {
+function Detail() {
   return (
     <div>TodoList</div>
   )
 }
 
-export default TodoList
+export default Detail;
