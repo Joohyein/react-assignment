@@ -1,8 +1,8 @@
 {
-    "todos": [
-        {
-            "id": 1,
-            "title": "hyeinzzang" 
-        }
-    ]
+  "todos": [
+    {
+      "title": "삭제버튼",
+      "id": 1
+    }
+  ]
 }
