@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useDispatch, useSelector } from "react-redux";
+import { addNumber, minusNumber } from "./module/counter";
 
 function App() {
+  const number = useSelector((state)=>state.counter.number);
+  const dispatch = useDispatch();
+
+  // action creator
+  const onPlusBtnClickHandler = () => {
+    dispatch(addNumber(1));
+  };
+
+  const onMinusBtnClickHandler = () => {
+    dispatch(minusNumber(1));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {number}
+      <br />
+      <button onClick={onPlusBtnClickHandler}>+</button>
+      <button onClick={onMinusBtnClickHandler}>-</button>
     </div>
   );
 }
