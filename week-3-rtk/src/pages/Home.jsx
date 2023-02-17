@@ -3,8 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import TodoList from "../component/TodoList"
 import { addTodo, deleteTodo, onToggleTodo } from '../redux/module/todos';
 import styled from 'styled-components';
+import { __getTodos } from '../redux/module/todos';
+import { useEffect } from 'react';
 
 function Home() {
+  // thunk -------------------
+  useEffect(()=>{
+    dispatch(__getTodos());
+    console.log("thunk")
+  },[]);
+  // -------------------------
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
