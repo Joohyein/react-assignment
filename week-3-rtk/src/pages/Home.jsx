@@ -15,10 +15,18 @@ function Home() {
   // -------------------------
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const inputFocus = useRef();
 
   const dispatch = useDispatch();
 
-  const data = useSelector((state)=>state.todos.todos)
+  const {isLoading, error, todos} = useSelector((state)=>state.todos);
+
+  if(isLoading) {
+    return <div>로딩중..</div>
+  }
+  if(error) {
+    return <div>{error.message}</div>
+  }
 
   const addBtnClickHandler = () => {
     if(!title || !content) return;
@@ -46,7 +54,6 @@ function Home() {
     }
   };
 
-  const inputFocus = useRef();
 
   return (
     <StContainer>
@@ -62,7 +69,7 @@ function Home() {
         <h3>Doing</h3>
         <StTodoList>
           {
-            data.filter((el)=>!el.isComplete).map((el)=>
+            todos.filter((el)=>!el.isComplete).map((el)=>
             <TodoList 
               item={el}
               key={el.id}
@@ -74,7 +81,7 @@ function Home() {
         <h3>Done</h3>
         <StTodoList>
           {
-            data.filter((el)=>el.isComplete).map((el)=>
+            todos.filter((el)=>el.isComplete).map((el)=>
             <TodoList
               item={el}
               key={el.id}

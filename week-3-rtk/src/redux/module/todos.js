@@ -19,10 +19,10 @@ export const __getTodos = createAsyncThunk(
             console.log("response : ", response);
 
             // promise객체가 resolve된 경우(네트워크 요청이 성공한 경우) -> dispatch해주는 기능을 가진 API(기능이 끝나고 나서 리듀서로 보내주는 역할)
-            thunkAPI.fulfillWithValue(response.data);
+            return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
             console.log("error : ", error)
-            thunkAPI.rejectWithValue(error);
+            return thunkAPI.rejectWithValue(error);
         }
         
     }
@@ -36,21 +36,36 @@ const todosSlice = createSlice({
     name: "todos",
     initialState,
     reducers:{
-        addTodo: (state, action) => {
-            state.todos.push({...action.payload, id : state.cnt, isComplete:false});
-            state.cnt += 1;
+        // addTodo: (state, action) => {
+        //     state.todos.push({...action.payload, id : state.cnt, isComplete:false});
+        //     state.cnt += 1;
+        // },
+        // deleteTodo: (state, action) => {
+        //     const arr = [...state.todos.filter((item)=>item.id!==action.payload)];
+        //     return {cnt:state.cnt, todos:arr};
+        // },
+        // onToggleTodo: (state, action) => {
+        //     const arr1 = [...state.todos.map((item)=>item.id === action.payload ? {...item, isComplete:!item.isComplete} : item)];
+        //     console.log(arr1);
+        //     return {cnt:state.cnt, todos:arr1};
+        // }
+    },
+    extraReducers: {
+        [__getTodos.pending]: (state, action) => {
+            // 아직 진행중일 때
+            state.isLoading = true;
         },
-        deleteTodo: (state, action) => {
-            const arr = [...state.todos.filter((item)=>item.id!==action.payload)];
-            return {cnt:state.cnt, todos:arr};
+        [__getTodos.fulfilled] : (state, action) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.todos = action.payload;
         },
-        onToggleTodo: (state, action) => {
-            const arr1 = [...state.todos.map((item)=>item.id === action.payload ? {...item, isComplete:!item.isComplete} : item)];
-            console.log(arr1);
-            return {cnt:state.cnt, todos:arr1};
+        [__getTodos.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.error = action.payload;
         }
     },
-    extraReducers: {},
 })
 
 export default todosSlice.reducer;
