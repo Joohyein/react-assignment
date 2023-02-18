@@ -3,13 +3,37 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import Modal from "./components/Modal";
 import Select from "./components/Select";
+import { MdArrowForwardIos } from "react-icons/md";
+import {AiOutlineBell} from "react-icons/ai"
 
 function App() {
   return (
     <StContainer>
       <StBox>
         <h1>Button</h1>
-        <Button />
+        <div>
+          <Button 
+            width={"200px"} 
+            height={"56px"} 
+            bgColor={"white"} 
+            border={"2px solid green"} 
+            onClick={()=>alert("버튼을 만들어보세요")}
+          >Large Primary Button <StIcon /></Button>
+          <Button width={"150px"} height={"52px"} bgColor={"green"} border={"none"} textColor={"gray"}>Medium</Button>
+          <Button width={"100px"} height={"42px"} bgColor={"green"} border={"none"} textColor={"gray"}>Small</Button>
+        </div>
+        <div>
+          <Button 
+            width={"200px"} 
+            height={"56px"} 
+            bgColor={"white"} 
+            border={"2px solid green"} 
+            textColor={"brown"}
+
+          >Large Negative Button <StIconBell /> </Button>
+          <Button width={"150px"} height={"52px"} bgColor={"pink"} border={"none"} textColor={"gray"}>Medium</Button>
+          <Button width={"100px"} height={"42px"} bgColor={"pink"} border={"none"} textColor={"gray"}>Small</Button>
+        </div>
       </StBox>
       <StBox>
         <h1>Input</h1>
@@ -34,4 +58,13 @@ const StContainer = styled.div`
 `;
 const StBox = styled.div`
   
+`;
+const StIcon = styled(MdArrowForwardIos)`
+  margin-left: 10px;
+  vertical-align: middle;
+`;
+const StIconBell = styled(AiOutlineBell)`
+  font-size:18px;
+  margin-left: 10px;
+  vertical-align: middle;
 `;
