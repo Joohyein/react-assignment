@@ -53,10 +53,10 @@ function App() {
 export default App;
 
 const StContainer = styled.div`
-  padding: 20px 30px;
+  padding: 0px 30px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  margin-bottom: 100px;
 `;
 const StBox = styled.div`
   

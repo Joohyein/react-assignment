@@ -20,7 +20,8 @@ function Input() {
  };
 
   const onClickBtnHandler = () => {
-    alert(`{name: ${name}, price: ${comma}}`);
+    alert(`{name: ${name}, price: ${comma.replaceAll(",","")}}`);
+    setComma("0");
   };
   
   const onKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) => {

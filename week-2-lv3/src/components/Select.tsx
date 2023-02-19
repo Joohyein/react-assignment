@@ -48,7 +48,7 @@ const StSelector = styled.select`
   border-radius: 8px;
   border:1px solid lightgray;
   box-sizing: border-box;
-  
+
   &::-ms-expand{
     display:none;/*for IE10,11*/
   }
