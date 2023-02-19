@@ -19,20 +19,19 @@ function App() {
             border={"2px solid green"} 
             onClick={()=>alert("버튼을 만들어보세요")}
           >Large Primary Button <StIcon /></Button>
-          <Button width={"150px"} height={"52px"} bgColor={"green"} border={"none"} textColor={"gray"}>Medium</Button>
-          <Button width={"100px"} height={"42px"} bgColor={"green"} border={"none"} textColor={"gray"}>Small</Button>
+          <Button width={"150px"} height={"52px"} bgColor={"green"} border={"none"} textColor={"white"}>Medium</Button>
+          <Button width={"100px"} height={"42px"} bgColor={"green"} border={"none"} textColor={"white"}>Small</Button>
         </div>
         <div>
           <Button 
             width={"200px"} 
             height={"56px"} 
             bgColor={"white"} 
-            border={"2px solid green"} 
+            border={"2px solid pink"} 
             textColor={"brown"}
-
           >Large Negative Button <StIconBell /> </Button>
-          <Button width={"150px"} height={"52px"} bgColor={"pink"} border={"none"} textColor={"gray"}>Medium</Button>
-          <Button width={"100px"} height={"42px"} bgColor={"pink"} border={"none"} textColor={"gray"}>Small</Button>
+          <Button width={"150px"} height={"52px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Medium</Button>
+          <Button width={"100px"} height={"42px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Small</Button>
         </div>
       </StBox>
       <StBox>
@@ -43,10 +42,10 @@ function App() {
         <h1>Modal</h1>
         <Modal />
       </StBox>
-      <StBox>
+      <StBoxSelect>
         <h1>Select</h1>
         <Select />
-      </StBox>
+      </StBoxSelect>
     </StContainer>
   );
 }
@@ -55,6 +54,9 @@ export default App;
 
 const StContainer = styled.div`
   padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 const StBox = styled.div`
   
@@ -68,3 +70,9 @@ const StIconBell = styled(AiOutlineBell)`
   margin-left: 10px;
   vertical-align: middle;
 `;
+
+const StBoxSelect = styled.div`
+  border: solid 3px gray;
+  padding: 20px;
+  padding-bottom: 60px;
+`

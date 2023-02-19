@@ -16,6 +16,7 @@ const Button = styled.button<{
   background-color: ${(props)=> props.bgColor};
   cursor: pointer;
   border-radius: 10px;
+  color:${props=> props.textColor}
 `;
 
 export default Button;
