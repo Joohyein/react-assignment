@@ -3,7 +3,6 @@ import useSelect from '../hook/useSelect';
 
 function Select() {
   const selectList = ["리액트", "자바", "스프링", "리액트네이티브"];
-  const selectListRight = ["리액트", "자바"];
   const [selected, changeValue] = useSelect();
   const [selectedRight, changeValueRight] = useSelect();
 
@@ -20,7 +19,7 @@ function Select() {
       </StBox>
       
       <StSelector onChange={changeValueRight} value={selectedRight}>
-        {selectListRight.map((item)=> (
+        {selectList.map((item)=> (
           <option value={item} key={item}>
           {item}
         </option>
@@ -49,6 +48,7 @@ const StSelector = styled.select`
   border:1px solid lightgray;
   box-sizing: border-box;
 
+  overflow: hidden;
   &::-ms-expand{
     display:none;/*for IE10,11*/
   }

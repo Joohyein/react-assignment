@@ -20,7 +20,7 @@ function Input() {
  };
 
   const onClickBtnHandler = () => {
-    alert(`{name: ${name}, price: ${comma.replaceAll(",","")}}`);
+    alert(`{name: ${name}, price: ${comma.replaceAll(",","")}}`); // 콤마가 없는 금액 표시
     setComma("0");
   };
   

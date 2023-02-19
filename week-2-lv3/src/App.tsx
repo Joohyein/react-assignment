@@ -29,7 +29,7 @@ function App() {
             bgColor={"white"} 
             border={"2px solid pink"} 
             textColor={"brown"}
-          >Large Negative Button <StIconBell /> </Button>
+          >Large Negative Button <StIconBell /><StDot></StDot> </Button>
           <Button width={"150px"} height={"52px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Medium</Button>
           <Button width={"100px"} height={"42px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Small</Button>
         </div>
@@ -75,4 +75,14 @@ const StBoxSelect = styled.div`
   border: solid 3px gray;
   padding: 20px;
   padding-bottom: 60px;
+`;
+
+const StDot = styled.div`
+  width:6px;
+  height: 6px;
+  background-color: tomato;
+  border-radius: 50%;
+  position: absolute;
+  top:18px;
+  right:18px;
 `
