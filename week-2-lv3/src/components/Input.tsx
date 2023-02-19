@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import useInput from '../hook/useInput';
 import Button from './Button';
@@ -5,10 +6,21 @@ import Button from './Button';
 function Input() {
 
   const [name, changeName ] = useInput();
-  const [price, changePrice ] = useInput();
+  // const [price, changePrice ] = useInput();
+
+  const [comma, setComma] = useState("0");
+
+  const changeEnteredNum = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value: string = e.target.value;
+    
+    const numValue:number = Number(value.replaceAll(',', '').replace(/[^0-9]/g, ''));
+    setComma(numValue.toLocaleString());
+    // setComma(numValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')); 
+    
+ };
 
   const onClickBtnHandler = () => {
-    alert(`{name: ${name}, price: ${price}}`);
+    alert(`{name: ${name}, price: ${comma}}`);
   };
   
   const onKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) => {
@@ -18,7 +30,7 @@ function Input() {
   return (
     <StBox>
       <StLabel>이름 : <input type="text" value={name} onChange={changeName} /></StLabel>
-      <StLabel>가격 : <input type="text" value={price} onChange={changePrice} onKeyDown={onKeyDown} /></StLabel>
+      <StLabel>가격 : <input type="text" value={comma} onChange={changeEnteredNum} onKeyDown={onKeyDown} /></StLabel>
       <Button 
         width={"100px"}
         height={"42px" }
