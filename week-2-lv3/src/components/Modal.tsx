@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components';
+import { useOutsideClickClose } from '../hook/useOutsideClick';
 import Button from './Button';
 
 function Modal() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpenOutside, setModalOpenOutside] = useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
 
   const showModal = () => {
     setModalOpen(true);
@@ -13,22 +13,7 @@ function Modal() {
   const showModalOutside = () => {
     setModalOpenOutside(true);
   }
-  useEffect(() => {
-    // 이벤트 핸들러 함수
-    const handler = (event:any) => {
-        // mousedown 이벤트가 발생한 영역이 모달창이 아닐 때, 모달창 제거 처리
-        if (modalRef.current && !modalRef.current.contains(event.target)) {
-            setModalOpenOutside(false);
-        }
-    };
-    // 이벤트 핸들러 등록
-    document.addEventListener('mousedown', handler);
-    
-    return () => {
-        // 이벤트 핸들러 해제
-        document.removeEventListener('mousedown', handler);
-    };
-});
+  const modalRef = useOutsideClickClose(()=>{setModalOpenOutside(false)}); 
 
   return (
     <div>

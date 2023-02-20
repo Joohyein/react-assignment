@@ -4,34 +4,39 @@ import useInput from '../hook/useInput';
 import Button from './Button';
 
 function Input() {
-
-  const [name, changeName ] = useInput();
-  // const [price, changePrice ] = useInput();
-
-  const [comma, setComma] = useState("0");
-
-  const changeEnteredNum = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value: string = e.target.value;
+  const [name, changeName, resetName ] = useInput((e)=>e);
+  const [price, changePrice, resetPrice ] = useInput((v) => {
+      const onlyNumber = v.replaceAll(',', '');
+      if(Number(onlyNumber).toLocaleString() !== "NaN") {
+        return Number(onlyNumber).toLocaleString();
+      } 
+    });
     
-    const numValue:number = Number(value.replaceAll(',', '').replace(/[^0-9]/g, ''));
-    setComma(numValue.toLocaleString());
-    // setComma(numValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')); 
+  // const [comma, setComma] = useState("0");
+
+//   const changeEnteredNum = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     const value: string = e.target.value;
     
- };
+//     const numValue:number = Number(value.replaceAll(',', '').replace(/[^0-9]/g, ''));
+//     setComma(numValue.toLocaleString());
+//     // setComma(numValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')); 
+//  };
 
   const onClickBtnHandler = () => {
-    alert(`{name: ${name}, price: ${comma.replaceAll(",","")}}`); // 콤마가 없는 금액 표시
-    setComma("0");
+    alert(`{name: ${name}, price: ${price.replaceAll(",","")}}`); // 콤마가 없는 금액 표시
+    resetName("");
+    resetPrice("0");
   };
   
   const onKeyDown = (e:React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter") onClickBtnHandler();
   };
 
+  
   return (
     <StBox>
       <StLabel>이름 : <input type="text" value={name} onChange={changeName} /></StLabel>
-      <StLabel>가격 : <input type="text" value={comma} onChange={changeEnteredNum} onKeyDown={onKeyDown} /></StLabel>
+      <StLabel>가격 : <input type="text" value={price} onChange={changePrice} onKeyDown={onKeyDown} /></StLabel>
       <Button 
         width={"100px"}
         height={"42px" }

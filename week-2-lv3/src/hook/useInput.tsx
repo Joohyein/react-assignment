@@ -1,18 +1,19 @@
 import { useState } from "react";
 import React from "react";
 
-type InputProps = [string, (e: React.ChangeEvent<HTMLInputElement>) => void, (e: React.ChangeEvent<HTMLInputElement>) => void];
+type InputProps = [string, (e: React.ChangeEvent<HTMLInputElement>) => void, (v:string) => void];
 
-const useInput = ():InputProps => {
+const useInput = (handler:(value:string)=>string|undefined):InputProps => {
     const [value, setValue] = useState<string>("");
     const changeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
+        const value = handler(e.target.value);
+        if(value !== undefined) {setValue(value)};
+        
     };
-    const reset = (e:React.ChangeEvent<HTMLInputElement>) => {
-        setValue("");
+    const reset = (v:string) => {
+        setValue(v);
     }
-    return [value, changeHandler, reset, ];
+    return [ value, changeHandler, reset ];
 };
 
 export default useInput;
-

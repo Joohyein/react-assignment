@@ -1,30 +1,45 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import useSelect from '../hook/useSelect';
+import { useOutsideClickClose } from '../hook/useOutsideClick';
 
 function Select() {
-  const selectList = ["리액트", "자바", "스프링", "리액트네이티브"];
-  const [selected, changeValue] = useSelect();
-  const [selectedRight, changeValueRight] = useSelect();
+  const selectList = [
+    { value: "리액트", id:1},
+    { value: "자바", id:2},
+    { value: "스프링", id:3},
+    { value: "리액트네이티브", id:4}
+  ];
+  // const [selected, changeValue] = useSelect();
+  // const [selectedRight, changeValueRight] = useSelect();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [item, setItem] = useState(null);
+
+  const onToggleList = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
+
+  const selectRef = useOutsideClickClose(()=>{setIsOpen(false)}); 
 
   return (
-    <StContainer>
-      <StBox>
-        <StSelector onChange={changeValue} value={selected}>
-          {selectList.map((item)=> (
-            <option value={item} key={item}>
-            {item}
-          </option>
-          ))}
-        </StSelector>
-      </StBox>
-      
-      <StSelector onChange={changeValueRight} value={selectedRight}>
-        {selectList.map((item)=> (
-          <option value={item} key={item}>
-          {item}
-        </option>
-        ))}
-      </StSelector>
+    <StContainer >
+      <div ref={selectRef} onClick={onToggleList} className="dropbody" style={{backgroundColor:"yellowgreen", padding:"20px"}}>
+      {
+        item? 
+        (
+          <div>{item}</div>
+        ) : 
+        (
+          <div >선택하세요.</div>
+        )
+      }
+      </div>
+      {
+        isOpen ? 
+        <div className='menu' style={{backgroundColor:"green", padding:"20px"}}>얖</div> :
+        null
+      }
     </StContainer>
   )
 }
@@ -33,7 +48,11 @@ export default Select;
 
 const StContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap:16px;
+  div {
+    width: 300px
+  }
 `;
 const StSelector = styled.select`
   width:240px;
