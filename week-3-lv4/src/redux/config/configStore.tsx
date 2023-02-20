@@ -1,9 +1,9 @@
-import React from 'react'
+import { configureStore } from "@reduxjs/toolkit";
+import books from "../modules/booksSlice";
 
-function configStore() {
-  return (
-    <div>configStore</div>
-  )
-}
+const store = configureStore({
+  reducer: { books },
+});
 
-export default configStore
+export default store;
+export type RootState = ReturnType<typeof store.getState>

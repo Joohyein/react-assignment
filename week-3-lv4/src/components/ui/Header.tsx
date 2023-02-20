@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
-function Header() {
+function Header({children}:any) {
   return (
-    <div>Header</div>
+    <StHeader>{children}</StHeader>
   )
 }
 
-export default Header
+export default Header;
+
+const StHeader = styled.div`
+  
+`;
