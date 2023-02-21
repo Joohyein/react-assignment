@@ -7,31 +7,37 @@ import { MdArrowForwardIos } from "react-icons/md";
 import {AiOutlineBell} from "react-icons/ai"
 
 function App() {
+  const whL = "200px";
+  const whM = "150px";
+  const whS = "100px";
+  const htL = "56px";
+  const htM = "52px";
+  const htS = "42px";
   return (
     <StContainer>
       <StBox>
         <h1>Button</h1>
         <div>
           <Button 
-            width={"200px"} 
-            height={"56px"} 
+            width={whL} 
+            height={htL} 
             bgColor={"white"} 
             border={"2px solid green"} 
             onClick={()=>alert("버튼을 만들어보세요")}
           >Large Primary Button <StIcon /></Button>
-          <Button width={"150px"} height={"52px"} bgColor={"green"} border={"none"} textColor={"white"}>Medium</Button>
-          <Button width={"100px"} height={"42px"} bgColor={"green"} border={"none"} textColor={"white"}>Small</Button>
+          <Button width={whM} height={htM} bgColor={"green"} border={"none"} textColor={"white"}>Medium</Button>
+          <Button width={whS} height={htS} bgColor={"green"} border={"none"} textColor={"white"}>Small</Button>
         </div>
         <div>
           <Button 
-            width={"200px"} 
-            height={"56px"} 
+            width={whL} 
+            height={htL} 
             bgColor={"white"} 
             border={"2px solid pink"} 
             textColor={"brown"}
           >Large Negative Button <StIconBell /><StDot></StDot> </Button>
-          <Button width={"150px"} height={"52px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Medium</Button>
-          <Button width={"100px"} height={"42px"} bgColor={"pink"} border={"none"} textColor={"brown"}>Small</Button>
+          <Button width={whM} height={htM} bgColor={"pink"} border={"none"} textColor={"brown"}>Medium</Button>
+          <Button width={whS} height={htS} bgColor={"pink"} border={"none"} textColor={"brown"}>Small</Button>
         </div>
       </StBox>
       <StBox>
@@ -75,6 +81,7 @@ const StBoxSelect = styled.div`
   border: solid 3px gray;
   padding: 20px;
   padding-bottom: 60px;
+  /* overflow: hidden; */
 `;
 
 const StDot = styled.div`

@@ -13,18 +13,24 @@ function Select() {
   // const [selectedRight, changeValueRight] = useSelect();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [item, setItem] = useState(null);
+  const [isOpenRight, setIsOpenRight] = useState(false);
+  const [item, setItem] = useState("");
+  const [itemRight, setItemRight] = useState("");
 
   const onToggleList = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
+  const onToggleListRight = () => {
+    setIsOpenRight(!isOpenRight);
+  }
 
   const selectRef = useOutsideClickClose(()=>{setIsOpen(false)}); 
+  const selectRefRight = useOutsideClickClose(()=>{setIsOpenRight(false)}); 
 
   return (
-    <StContainer >
-      <div ref={selectRef} onClick={onToggleList} className="dropbody" style={{backgroundColor:"yellowgreen", padding:"20px"}}>
+    <StBox>
+    <StContainer>
+      <div ref={selectRef} onClick={onToggleList} className="dropbody" >
       {
         item? 
         (
@@ -36,11 +42,53 @@ function Select() {
       }
       </div>
       {
-        isOpen ? 
-        <div className='menu' style={{backgroundColor:"green", padding:"20px"}}>얖</div> :
-        null
+        isOpen?
+        <StSelector>
+        {isOpen ? selectList.map((item)=><div key={item.id} className='menu' onClick={()=>{
+          setItem(`${item.value}`);
+          console.log(item.value);
+          }}>{item.value}</div> 
+          ): 
+          null
+        }
+      </StSelector>
+        :null
       }
+    
+      </StContainer>
+
+      <StContainer>
+      <div ref={selectRefRight} onClick={onToggleListRight} className="dropbody" >
+      {
+        item? 
+        (
+          <div>{item}</div>
+        ) : 
+        (
+          <div >선택하세요.</div>
+        )
+      }
+      </div>
+      
+      {
+        isOpenRight?
+        <StSelector>
+        {isOpenRight ? selectList.map((item)=><StMenu key={item.id} onClick={()=>{
+          setItem(item.value);
+          console.log(item.value);
+          }}>{item.value}</StMenu> 
+          ): 
+          null
+        }
+      </StSelector>
+        :null
+      }
+        
+      
     </StContainer>
+
+    </StBox>
+
   )
 }
 
@@ -49,14 +97,20 @@ export default Select;
 const StContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap:16px;
-  div {
-    width: 300px
-  }
-`;
-const StSelector = styled.select`
-  width:240px;
+  width:300px;
   padding:.8em .5em;
+  border : 1px solid lightgray;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+`;
+const StSelector = styled.div`
+  display: flex;
+  flex-direction: column;
+  width:300px;
+  position:absolute;
+  top:50px;
+  background-color: white;
 
   -o-appearance: none;
   -webkit-appearance: none;
@@ -67,19 +121,23 @@ const StSelector = styled.select`
   border:1px solid lightgray;
   box-sizing: border-box;
 
-  overflow: hidden;
   &::-ms-expand{
     display:none;/*for IE10,11*/
   }
-  option {
-    background: pink;
-    color:black;
+  div {
+    border-bottom: 1px solid lightgray;
+    padding:8px;
   }
 `;
 
+const StMenu = styled.div`
+  cursor: pointer;
+`
+
 // 화살표 
 const StBox = styled.div`
-  background:url("../image/arrow.png") no-repeat right 24px center;
+  /* background:url("../image/arrow.png") no-repeat right 24px center; */
+  display: flex;
 `;
 
 // 화살표 모양 바꾸기 어케해??
