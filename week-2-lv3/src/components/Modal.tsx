@@ -18,11 +18,11 @@ function Modal() {
   return (
     <div>
       <Button 
-        width={"100px"} 
-        height={"42px"} 
-        bgColor={"green"} 
-        border={"none"} 
-        textColor={"white"}
+        width="small"
+        height="small"
+        bgColor="green"
+        border="none"
+        textColor="white"
         onClick={showModal}
       >modal open</Button>
       {modalOpen ? 
@@ -36,11 +36,11 @@ function Modal() {
         : null
       }
       <Button 
-            width={"200px"} 
-            height={"56px"} 
-            bgColor={"white"} 
-            border={"2px solid pink"} 
-            textColor={"brown"}
+            width="large"
+            height="large" 
+            bgColor="white" 
+            border="borderPink"
+            textColor="brown"
             onClick={showModalOutside}
       >open modal
       </Button>

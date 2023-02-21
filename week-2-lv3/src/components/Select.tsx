@@ -29,8 +29,8 @@ function Select() {
 
   return (
     <StBox>
-    <StContainer>
-      <div ref={selectRef} onClick={onToggleList} className="dropbody" >
+    <StContainer ref={selectRef}>
+      <div onClick={onToggleList} className="dropbody" >
       {
         item? 
         (
@@ -45,8 +45,9 @@ function Select() {
         isOpen?
         <StSelector>
         {isOpen ? selectList.map((item)=><div key={item.id} className='menu' onClick={()=>{
-          setItem(`${item.value}`);
+          setItem(item.value);
           console.log(item.value);
+          onToggleList();
           }}>{item.value}</div> 
           ): 
           null
@@ -57,12 +58,12 @@ function Select() {
     
       </StContainer>
 
-      <StContainer>
-      <div ref={selectRefRight} onClick={onToggleListRight} className="dropbody" >
+      <StContainer ref={selectRefRight}>
+      <div onClick={onToggleListRight} className="dropbody" >
       {
-        item? 
+        itemRight? 
         (
-          <div>{item}</div>
+          <div>{itemRight}</div>
         ) : 
         (
           <div >선택하세요.</div>
@@ -74,8 +75,9 @@ function Select() {
         isOpenRight?
         <StSelector>
         {isOpenRight ? selectList.map((item)=><StMenu key={item.id} onClick={()=>{
-          setItem(item.value);
+          setItemRight(item.value);
           console.log(item.value);
+          onToggleListRight();
           }}>{item.value}</StMenu> 
           ): 
           null
@@ -83,8 +85,6 @@ function Select() {
       </StSelector>
         :null
       }
-        
-      
     </StContainer>
 
     </StBox>

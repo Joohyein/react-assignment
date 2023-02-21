@@ -1,43 +1,39 @@
 import styled from "styled-components";
-import Button from "./components/Button";
 import Input from "./components/Input";
 import Modal from "./components/Modal";
 import Select from "./components/Select";
 import { MdArrowForwardIos } from "react-icons/md";
-import {AiOutlineBell} from "react-icons/ai"
+import {AiOutlineBell} from "react-icons/ai";
+import Button from "./components/Button";
 
 function App() {
-  const whL = "200px";
-  const whM = "150px";
-  const whS = "100px";
-  const htL = "56px";
-  const htM = "52px";
-  const htS = "42px";
+  const onClick = () => alert("버튼을 만드세요");
   return (
     <StContainer>
       <StBox>
         <h1>Button</h1>
         <div>
           <Button 
-            width={whL} 
-            height={htL} 
-            bgColor={"white"} 
-            border={"2px solid green"} 
-            onClick={()=>alert("버튼을 만들어보세요")}
+            width="large"
+            height="large"
+            bgColor="white"
+            border="borderGreen"
+            textColor="white"
+            onClick={onClick}
           >Large Primary Button <StIcon /></Button>
-          <Button width={whM} height={htM} bgColor={"green"} border={"none"} textColor={"white"}>Medium</Button>
-          <Button width={whS} height={htS} bgColor={"green"} border={"none"} textColor={"white"}>Small</Button>
+          <Button width="medium" height="medium" bgColor="green" border="none" textColor="white">Medium</Button>
+          <Button width="small" height="small" bgColor="green" border="none" textColor="white">Small</Button>
         </div>
         <div>
           <Button 
-            width={whL} 
-            height={htL} 
+            width="large"
+            height="large" 
             bgColor={"white"} 
-            border={"2px solid pink"} 
-            textColor={"brown"}
+            border="borderPink"
+            textColor="brown"
           >Large Negative Button <StIconBell /><StDot></StDot> </Button>
-          <Button width={whM} height={htM} bgColor={"pink"} border={"none"} textColor={"brown"}>Medium</Button>
-          <Button width={whS} height={htS} bgColor={"pink"} border={"none"} textColor={"brown"}>Small</Button>
+          <Button width="medium" height="medium" bgColor="pink" border="none" textColor="brown">Medium</Button>
+          <Button width="small" height="small" bgColor="pink" border="none" textColor="brown">Small</Button>
         </div>
       </StBox>
       <StBox>
@@ -81,7 +77,7 @@ const StBoxSelect = styled.div`
   border: solid 3px gray;
   padding: 20px;
   padding-bottom: 60px;
-  /* overflow: hidden; */
+  overflow: hidden;
 `;
 
 const StDot = styled.div`

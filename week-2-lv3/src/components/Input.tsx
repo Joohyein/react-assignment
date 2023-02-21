@@ -38,11 +38,11 @@ function Input() {
       <StLabel>이름 : <input type="text" value={name} onChange={changeName} /></StLabel>
       <StLabel>가격 : <input type="text" value={price} onChange={changePrice} onKeyDown={onKeyDown} /></StLabel>
       <Button 
-        width={"100px"}
-        height={"42px" }
-        bgColor={"green"}
-        border={"none"}
-        textColor={"white"}
+        width="small"
+        height="small"
+        bgColor="green"
+        border="none"
+        textColor="white"
         onClick={onClickBtnHandler}
       > 저장 </Button>
     </StBox>
