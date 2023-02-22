@@ -29,6 +29,7 @@ function Input() {
       return;
     }
     e.preventDefault();
+    alert("등록되었습니다");
     const newBook = {
       userName,
       bookTitle,

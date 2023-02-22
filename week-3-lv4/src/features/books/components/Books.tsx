@@ -45,12 +45,12 @@ const StMain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width:100%;
+  width:50%;
 `;
 const StContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 50%;
+  width: 100%;
 `;
 
 const StUserName = styled.h3`
@@ -79,7 +79,7 @@ const StLink = styled(Link)`
   text-decoration: none;
   color:black;
   cursor:pointer;
-  &:hover, &:visited{
+  &:hover {
     color: green;
   }
 `;
