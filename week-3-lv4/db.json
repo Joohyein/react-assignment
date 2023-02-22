@@ -1,9 +1,16 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "json-server",
-      "content": "typicode"
+      "userName": "책",
+      "bookTitle": "등록하기",
+      "bookReport": "재밌어요",
+      "id": 3
+    },
+    {
+      "userName": "혜인",
+      "bookTitle": "우빛속",
+      "bookReport": "최고",
+      "id": 4
     }
   ]
 }

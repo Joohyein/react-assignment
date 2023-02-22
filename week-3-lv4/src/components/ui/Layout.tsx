@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Layout({children}:any) {
+interface Props  {
+  children : React.ReactNode,
+}
+
+function Layout({children}:Props) {
   return (
     <StLayout>
         {children}
@@ -13,4 +17,4 @@ export default Layout;
 
 const StLayout = styled.div`
     
-`
+`;

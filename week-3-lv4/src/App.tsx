@@ -1,24 +1,15 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from './redux/config/configStore';
-import api from "./axios/api";
+// import api from "./axios/api";
 import Router from './shared/Router';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-function App() {
-  const books = useSelector((state:RootState)=>state.books);
+const queryClient = new QueryClient();
 
-  useEffect(() => {
-    api
-      .get("/books")
-      .then((res) => {
-        console.log("결과 => ", res.data);
-      })
-      .catch((err) => {
-        console.log("오류가 발생하였습니다!");
-      });
-  }, []);
-
-  return <Router />
+function App() { 
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router />
+    </QueryClientProvider>
+  )
 }
 
 export default App;
