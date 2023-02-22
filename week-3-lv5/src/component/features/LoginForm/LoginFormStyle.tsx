@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const StContainer = styled.form`
-    
+const StContainerForm = styled.form`
+    padding:100px;
 `;
 const StLabel = styled.label`
     
@@ -11,4 +11,4 @@ const StInput = styled.input`
 `;
 
 
-export {StContainer, StInput, StLabel};
+export {StContainerForm, StInput, StLabel};

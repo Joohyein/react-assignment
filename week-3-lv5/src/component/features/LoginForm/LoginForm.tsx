@@ -3,14 +3,23 @@ import { StButton } from '../MoveTo/MoveToStyle';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../../../hook/useInput';
+import { useMutation } from 'react-query';
+import { addInfo } from '../../../axios/api';
 
 function LoginForm() {
   const navigate = useNavigate();
 
-  const [userId, changeUserId, resetId] = useInput((e)=>e);
-  const [userPw, changeUserPw, resetPw] = useInput((e)=>e);
+  const mutaion = useMutation(addInfo, {
+    onSuccess: () => {
+      navigate("/");
+    },
+    onError: () => {}
+  });
 
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [userId, changeUserId] = useInput((e)=>e);
+  const [userPw, changeUserPw] = useInput((e)=>e);
+
+  // const [errorMsg, setErrorMsg] = useState(null);
 
   const submitHandler = async (e:any) => {
     e.preventDefault();
@@ -22,12 +31,16 @@ function LoginForm() {
       alert("비밀번호를 입력해주세요");
       return;
     }
-    alert("로그인 성공");
-
-    
-
-
+    const newInfo = {
+      id: userId,
+      password: userPw
+    };
+    mutaion.mutate(newInfo);
   }
+
+  // const jwtToken = await Login(loginPayload)
+
+
   const keyDownHandler = (e:React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter") {return submitHandler};
   }

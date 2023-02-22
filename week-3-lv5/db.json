@@ -1,19 +1,8 @@
 {
-  "posts": [
+  "info": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "userId": 1,
+      "userPw": "1234"
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]  
 }

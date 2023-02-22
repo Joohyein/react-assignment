@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../component/ui/Layout/Layout';
 import Header from '../component/ui/Header/Header';
-import MoveTo from '../component/MoveTo/MoveTo';
+import MoveTo from '../component/features/MoveTo/MoveTo';
 
 function Home() {
   return (
