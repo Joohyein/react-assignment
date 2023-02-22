@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/ui/Layout';
 import Header from '../components/ui/Header';
-import Books from '../featurs/bookList/components/Books';
+import Books from '../features/bookList/components/Books';
 import { useQuery } from 'react-query';
 import { getBooks } from '../axios/api';
 import styled from 'styled-components';

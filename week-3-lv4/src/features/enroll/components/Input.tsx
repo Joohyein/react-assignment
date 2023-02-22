@@ -4,7 +4,7 @@ import useInput from '../../../hook/useInput';
 import { addBooks } from '../../../axios/api';
 import { useMutation, useQueryClient } from 'react-query';
 import StButton from '../../../components/ui/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Input() {
   const [userName, changeUserName, resetName] = useInput();

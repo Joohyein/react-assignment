@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/ui/Layout';
 import Header from '../components/ui/Header';
-import Input from '../featurs/enroll/components/Input';
+import Input from '../features/enroll/components/Input';
 
 function Enroll() {
   return (
