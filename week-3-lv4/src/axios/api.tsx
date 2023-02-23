@@ -20,7 +20,7 @@ const removeBook = async(id:string) => {
 };
 
 // 변경
-const reviseBook = async ({id, value}:any) => {
+const reviseBook = async ({id, value}:{id:number, value:string}) => {
     await axios.patch(`${BASE_URL}/books/${id}`, {
       bookReport: value,
     });

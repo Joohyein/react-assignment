@@ -8,19 +8,20 @@ import { useQueryClient, useMutation } from 'react-query';
 import { reviseBook } from '../../../axios/api';
 
 
-function Detail({book}:any) {
+function Detail({book}:{book:{userName:string, bookTitle:string, bookReport:string, id:number}}) {
 
   const navigate = useNavigate();
 
   const [revise, setRevise] = useState(false);
   const [value, changeValue, reset] = useInput();
 
-  useEffect(()=>{
-    if(book.length > 1 || book.length <= 0) {
-      alert("올바르지 않은 접근입니다. 메인페이지로 이동합니다.")
-      navigate("/");
-    }
-  }, []);
+   // params
+  // useEffect(()=>{
+  //   if(book.length > 1 || book.length <= 0) {
+  //     alert("올바르지 않은 접근입니다. 메인페이지로 이동합니다.")
+  //     navigate("/");
+  //   }
+  // }, []);
 
   const queryClient = useQueryClient();
   const mutaion = useMutation(reviseBook, {
@@ -29,13 +30,12 @@ function Detail({book}:any) {
     }
   })
 
-  const onToggleHandler = (id:string, value:string) => {
+  const onToggleHandler = (id:number, value:string) => {
     if(value === "") {
       alert("내용을 입력해주세요");
       return;
     }
     setRevise(!revise);
-    console.log(revise);
     mutaion.mutate({id, value});
     reset();
   }
