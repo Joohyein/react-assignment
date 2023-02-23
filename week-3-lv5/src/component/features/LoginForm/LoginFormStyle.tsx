@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StContainerForm = styled.form`
+const StContainerForm = styled.div`
     padding:100px;
 `;
 const StLabel = styled.label`

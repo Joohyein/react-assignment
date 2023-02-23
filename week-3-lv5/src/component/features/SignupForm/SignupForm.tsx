@@ -1,18 +1,21 @@
-import { StContainerForm, StInput, StLabel, StIdBox } from "./SignupFormStyle";
+import { StContainerForm, StInput, StLabel, StIdBox, StPwBox } from "./SignupFormStyle";
 import { StButton } from "../MoveTo/MoveToStyle";
 import useInput from "../../../hook/useInput";
-import { useMutation, useQueryClient } from 'react-query';
-import { addInfo } from '../../../axios/api';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 function SignupForm() {
   const navigate = useNavigate();
 
   const [userId, changeUserId ] = useInput((e)=>e);
   const [userPw, changeUserPw ] = useInput((e)=>e);
+  const [cookies, setCookies] = useCookies(['user']);
+
+  const BASE_URL = "http://3.38.191.164";
 
   const submitHandler = async (e:any) => {
+    console.log(111);
     e.preventDefault();
     if(userId === ""){
       alert ("아이디를 입력해주세요");
@@ -26,15 +29,17 @@ function SignupForm() {
       id: userId,
       password: userPw,
     };
-    axios.post(`/register`, body, {
+    axios.post(`${BASE_URL}/register`, body, {
       withCredentials: true,
     })
     .then((res) => {
+      setCookies('user', res.data.id);
+      console.log(res);
       alert("회원가입 성공");
-      navigate('/login');
+      // navigate('/login');
     })
     .catch((error)=>{
-      alert()
+      console.log(error);
     })
   }
 
@@ -43,7 +48,7 @@ function SignupForm() {
   }
 
   return (
-    <StContainerForm>
+    <StContainerForm onSubmit={submitHandler}>
       <StIdBox>
         <StLabel> 아이디 
           <StInput 
@@ -56,18 +61,22 @@ function SignupForm() {
         </StLabel>
         <StButton> 중복확인 </StButton>
       </StIdBox>
-      <StLabel> 비밀번호 
-        <StInput 
-          id="pw"
-          type="password"
-          placeholder='비밀번호를 입력하세요'
-          value={userPw}
-          onChange={changeUserPw}
-          onKeyDown={keyDownHandler}
-        />
-      </StLabel>
-      <StLabel> 비밀번호 확인  <StInput /></StLabel>
-      <StButton onClick={()=>navigate('/login')}> 회원가입 </StButton>
+      <StPwBox>
+        <StLabel> 비밀번호 
+          <StInput 
+            id="pw"
+            type="password"
+            placeholder='비밀번호를 입력하세요'
+            value={userPw}
+            onChange={changeUserPw}
+            onKeyDown={keyDownHandler}
+          />
+        </StLabel>
+        {/* <StLabel> 비밀번호 확인  
+          <StInput placeholder="비밀번호를 입력해주세요" />
+        </StLabel> */}
+      </StPwBox>
+      <StButton type="submit"> 회원가입 </StButton>
     </StContainerForm>
   )
 }

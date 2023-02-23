@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 
-type InputProps = [string, (e: React.ChangeEvent<HTMLInputElement>) => void, (v:string) => void];
+type InputProps = [string, (e: React.ChangeEvent<HTMLInputElement>) => void, () => void];
 
 const useInput = (handler:(value:string)=>string|undefined):InputProps => {
     const [value, setValue] = useState<string>("");
@@ -10,8 +10,8 @@ const useInput = (handler:(value:string)=>string|undefined):InputProps => {
         if(value !== undefined) {setValue(value)};
         
     };
-    const reset = (v:string) => {
-        setValue(v);
+    const reset = () => {
+        setValue('');
     }
     return [ value, changeHandler, reset ];
 };

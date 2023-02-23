@@ -12,6 +12,10 @@ const StInput = styled.input`
 const StIdBox = styled.div`
     
 `;
+const StPwBox = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
 
 
-export {StContainerForm, StInput, StLabel, StIdBox };
+export {StContainerForm, StInput, StLabel, StIdBox, StPwBox };
