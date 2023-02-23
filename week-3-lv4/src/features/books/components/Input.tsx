@@ -24,11 +24,13 @@ function Input() {
 
 
   const submitBtnHandler = async (e:any) => {
-    if(userName === "" || bookTitle === "" || bookReport === "") {
+    e.preventDefault();
+
+    if(!userName || !bookTitle || !bookReport) {
       alert("내용을 입력해주세요");
       return;
     }
-    e.preventDefault();
+
     alert("등록되었습니다");
     const newBook = {
       userName,
